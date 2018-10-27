@@ -1,5 +1,6 @@
 package TrafficMonitorServer;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -32,17 +33,22 @@ private Hashtable objectOutputStreams = new Hashtable();
     // Usage: java Server >port<
          public static void main(String args[]) throws Exception
     {
-
-        System.out.println(args[0]);
-        // Get the port # from the command line
-        int port = Integer.parseInt(args[0]);
-
+        int port;
+        if (args.length == 0)
+        {
+            port = 5000;
+        } else
+        {
+            // Get the port # from the command line
+            System.out.println(args[0]);
+            port = Integer.parseInt(args[0]);
+        }
 
         //Create a new server object, which will automatically begin
         // accepting conecitons
         new TrafficMonitorServer(port);
     }
-         
+
          
     // Constructor and while-accept loop all in one.
     public TrafficMonitorServer(int port) throws IOException
@@ -112,8 +118,10 @@ private Hashtable objectOutputStreams = new Hashtable();
 
                 try
                 {
-                    objectOut.writeObject(entry);
-                    System.out.println("Sent Object: "+ entry.convertToString());
+                    Gson gson = new Gson();
+                    
+                    objectOut.writeObject(gson.toJson(entry));
+                    System.out.println("Sent Object: "+ entry.convertToString() + " To Soocket" + e.toString());
                 } catch (IOException ex)
                 {
                     System.out.println("Error sending Object: " + ex);

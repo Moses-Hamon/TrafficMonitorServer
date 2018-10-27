@@ -1,4 +1,5 @@
 package TrafficMonitorServer;
+import com.google.gson.Gson;
 import java.io.DataInputStream;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -33,13 +34,17 @@ public class ServerThread extends Thread
             //Over and over forever
             while (true)
             {
+                //Adds new Gson instance
+                Gson gson = new Gson();
+                
                 //Read all traffic entries 
-                TrafficEntry entry = (TrafficEntry) objectIn.readObject();
+                TrafficEntry entry = gson.fromJson(objectIn.readObject().toString(), TrafficEntry.class);
                 // if the entry exists then log it and send it on.
                 if (entry != null)
                 {
                     System.out.println("Received Traffic Entry from " + entry.stationLocationID);
                     server.sendObjectToAll(entry);
+                    System.out.println(entry.convertToString());
                 }
             }
         } catch (Exception ie)

@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author Moses
  */
 
-public class TrafficEntry implements Serializable
+public class TrafficEntry
 {
 
     //properties
