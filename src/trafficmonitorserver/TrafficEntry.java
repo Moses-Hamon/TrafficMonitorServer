@@ -42,7 +42,24 @@ public class TrafficEntry
         this.avgNumberOfVehicles = avgNumberOfVehicles;
         this.avgVelocity = avgVelocity;
     }
-    
+    /**
+     * Creates an object array with all properties
+     * @return 
+     */
+    public Object[] ToFullObjectArray()
+    {
+        Object[] fullEntryArray = new Object[]
+        {
+            this.time,
+            this.stationLocationID,
+            this.numberOfLanes,
+            this.totalNumberOfVehicles,
+            this.avgNumberOfVehicles,
+            this.avgVelocity
+        };
+        return fullEntryArray;
+    }
+
     /**
      * Method used for Table model (as the table only requires 4 fields)
      * @return 
