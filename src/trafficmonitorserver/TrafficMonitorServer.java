@@ -27,7 +27,7 @@ public class TrafficMonitorServer
     // A mapping from sockets to DataOutputStreams. This will
 // help us avoid having to create a DataOutputStream each time
 // we want to write to a stream.
-private Hashtable objectOutputStreams = new Hashtable();
+private final Hashtable objectOutputStreams;
     
 //Main routine
     // Usage: java Server >port<
@@ -53,6 +53,7 @@ private Hashtable objectOutputStreams = new Hashtable();
     // Constructor and while-accept loop all in one.
     public TrafficMonitorServer(int port) throws IOException
     {
+        this.objectOutputStreams = new Hashtable();
 // All we have to do is listen
         listen(port);
     }
