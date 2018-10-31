@@ -87,10 +87,9 @@ private final Hashtable objectOutputStreams;
 
             // Create a DataOutputStream for writing data to the
             // other side
-//            DataOutputStream dataOut = new DataOutputStream(s.getOutputStream());
             ObjectOutputStream objectOut = new ObjectOutputStream(s.getOutputStream());
             // Save this stream so we don't need to make it again
-//            outputStreams.put(s, dataOut);
+
             objectOutputStreams.put(s, objectOut);
 
             // Create a new thread for this connection, and then forget
