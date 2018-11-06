@@ -18,13 +18,14 @@ import sun.security.x509.IPAddressName;
  * application
  *
  * @author Moses
+ * @version 1.1
  */
 public class TrafficMonitorServer
 {
    //InetAddress address = InetAddress.getByName("60.230.168.124");
     // The ServerSocket we'll use for accepting new connections
     private ServerSocket ss;
-    // A mapping from sockets to DataOutputStreams. This will
+// A mapping from sockets to DataOutputStreams. This will
 // help us avoid having to create a DataOutputStream each time
 // we want to write to a stream.
 private final Hashtable objectOutputStreams;
@@ -49,8 +50,11 @@ private final Hashtable objectOutputStreams;
         new TrafficMonitorServer(port);
     }
 
-         
-    // Constructor and while-accept loop all in one.
+     /**
+     * Constructor and while-accept loop all in one.
+     * @param port
+     * @throws IOException
+     */
     public TrafficMonitorServer(int port) throws IOException
     {
         this.objectOutputStreams = new Hashtable();

@@ -26,12 +26,12 @@ public class TrafficEntry
     }
 /**
  * 
- * @param time
- * @param stationLocationID
- * @param numberOfLanes
- * @param totalNumberOfVehicles
- * @param avgNumberOfVehicles
- * @param avgVelocity 
+ * @param time - time of Traffic entry
+ * @param stationLocationID - Which monitor station
+ * @param numberOfLanes - Number of lanes for roads
+ * @param totalNumberOfVehicles - Total number of vehicles
+ * @param avgNumberOfVehicles - Average number of vehicles
+ * @param avgVelocity - Average velocity of each vehicles.
  */
     public TrafficEntry(String time, int stationLocationID, int numberOfLanes, int totalNumberOfVehicles, int avgNumberOfVehicles, int avgVelocity )
     {
